@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>질문/답변</title>
+</head>
+<body>
+    <h2>{{ question.subject }}</h2>
+    <div>
+        {{ question.content }}
+    </div>
+    <h5>{{ question.answer_set.count }}개의 답변이 있습니다.</h5>
+    <div>
+        <ul>
+            {% for answer in question.answer_set.all %}
+            <li>{{ answer.content }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <form action="{% url 'board:answer_create' question.id %}" method="post">
+        {% csrf_token %}
+        <div>
+            <textarea name="content" rows="7" cols="50"></textarea>
+        </div>
+        <input type="submit" value="답변 등록">
+    </form>
+</body>
+</html>
