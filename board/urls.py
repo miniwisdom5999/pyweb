@@ -39,11 +39,11 @@ urlpatterns = [
          name='comment_create_question'),
 
     # 질문 댓글 삭제
-    path('comment/delete/question/<int:question_id>/', views.comment_delete_question,
+    path('comment/delete/question/<int:comment_id>/', views.comment_delete_question,
          name='comment_delete_question'),
 
     # 질문 댓글 수정
-    path('comment/modify/question/<int:question_id>/', views.comment_modify_question,
+    path('comment/modify/question/<int:comment_id>/', views.comment_modify_question,
          name='comment_modify_question'),
 
 
