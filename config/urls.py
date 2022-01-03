@@ -15,8 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# from board import views
-from board.views import base_views, question_views, answer_views, comment_views, vote_views
+from board.views import base_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),

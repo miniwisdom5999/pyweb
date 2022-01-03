@@ -6,8 +6,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
-from board.models import Question, Answer, Comment
-from board.forms import QuestionForm, AnswerForm, CommentForm
+from board.forms import QuestionForm
+from board.models import Question
 
 
 @login_required(login_url='common:login') #로그인이 안되어 있으면 로그인 페이지로 이동
@@ -24,7 +24,6 @@ def question_create(request):
     else:
         form = QuestionForm()   #form 객체 생성
     return render(request, 'board/question_form.html', {'form':form})
-
 
 @login_required(login_url='common:login')
 def question_modify(request, question_id):
@@ -48,5 +47,3 @@ def question_delete(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     question.delete() #질문 삭제
     return redirect('board:index')
-
-
